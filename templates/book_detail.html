@@ -1,0 +1,44 @@
+<title>Contacts</title>
+<h1>Search </h1>
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+	<ul>
+        {% for message in messages %}
+ 			<li>{{ message[1] }}</li>
+{% endfor %}
+	</ul>
+{% endif %}
+{% endwith %}
+
+{% if errors %}
+<p>{{ errors }}</p>
+{% endif %}
+
+<form action="" method="post">
+            {{ form.csrf }}
+<div class="input text">
+    {{ form.search_field }}
+    <input type="submit" value="Submit">
+</div>
+
+</form>
+	<div>
+		<button><a href="{{ url_for('add_contact', name=book) }}">Add Contact</a></button>
+		<button><a href="/">Return to the main page</a></button>
+	</div>
+
+{% for k, v in contacts.items() %}
+	<div style="border: 1px solid;">
+		<p>ID: {{k}}</p>
+		<p>First name: {{ v.first_name }}</p>
+		<p>Surname: {{ v.surname }}</p>
+		<p>Company: {{ v.company }}</p>
+		<p>Address: {{ v.address }}</p>
+		<p>Phone: {{ v.telephone }}</p>
+		<p>Email: {{ v.email }}</p>
+		<br>
+		<button><a href="{{url_for('update_contact', name=book, idx=k)}}">Update Contact</a></button>
+		<button><a href="{{url_for('delete_contact', name=book, idx=k)}}">Delete Contact</a></button>
+	</div>
+	<br>
+{% endfor %}

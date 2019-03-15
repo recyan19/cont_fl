@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Contact Books</title>
+</head>
+<body>
+<h1>Available books: </h1>
+{% for book in books %}
+	<li><a href="{{ url_for('auther', name=book) }}">{{ book }}</a></li>
+{% endfor %}
+<br>
+<button><a href="{{ url_for('create_book') }}">Create new book</a></button>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{% for k, v in results.items() %}
+	<div style="border: 1px solid;">
+		<p>ID: {{k}}</p>
+		<p>First name: {{ v.first_name }}</p>
+		<p>Surname: {{ v.surname }}</p>
+		<p>Company: {{ v.company }}</p>
+		<p>Address: {{ v.address }}</p>
+		<p>Phone: {{ v.telephone }}</p>
+		<p>Email: {{ v.email }}</p>
+		<br>
+		<button><a href="{{url_for('update_contact', name=name, idx=k)}}">Update Contact</a></button>
+		<button><a href="{{url_for('delete_contact', name=name, idx=k)}}">Delete Contact</a></button>
+	</div>
+	<br>
+{% endfor %}
+	<div>
+		<button><a href="{{url_for('book_detail', name=name)}}">Go back</a></button>
+		<button><a href="/">Return to the main page</a></button>
+	</div>
